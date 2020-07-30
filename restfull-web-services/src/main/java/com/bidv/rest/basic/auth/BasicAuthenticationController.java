@@ -1,10 +1,8 @@
-package com.bidv.rest.webservices.restfullwebservices.controller;
+package com.bidv.rest.basic.auth;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.bidv.rest.webservices.restfullwebservices.bean.AuthenticationBean;
 
 @CrossOrigin(origins="http://localhost:4200")
 @RestController

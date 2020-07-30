@@ -1,4 +1,4 @@
-package com.bidv.rest.webservices.restfullwebservices.bean;
+package com.bidv.rest.basic.auth;
 
 public class AuthenticationBean {
 	private String message;

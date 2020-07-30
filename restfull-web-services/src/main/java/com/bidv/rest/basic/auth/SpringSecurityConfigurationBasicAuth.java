@@ -1,7 +1,7 @@
+package com.bidv.rest.basic.auth;
 /**
  * 
  */
-package com.bidv.rest.webservices.restfullwebservices.basic.auth;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
