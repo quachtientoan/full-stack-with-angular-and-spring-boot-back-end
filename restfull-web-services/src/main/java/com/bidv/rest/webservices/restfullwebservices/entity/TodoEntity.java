@@ -5,12 +5,22 @@ package com.bidv.rest.webservices.restfullwebservices.entity;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * @author BIDVAdmin
  *
  */
+
+@Entity
+@Table(name = "TODO")
 public class TodoEntity {
 
+	@Id
+	@GeneratedValue
 	private Long id;
 
 	private String username;

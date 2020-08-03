@@ -9,23 +9,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table(name = "TOANQT_CUSTOMER")
+@Table(name = "CUSTOMER")
 @Entity
 public class CustomerEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	@Column(name = "name")
+
 	private String name;
-	
-	@Column(name = "branch")
+
 	private String branch;
-	
+
 	@Column(name = "created_date")
 	private Date createdDate;
-	
-	@Column(name = "age")
+
 	private Integer age;
 
 	public Integer getId() {
@@ -67,8 +64,6 @@ public class CustomerEntity {
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
-	
-	
 
 	public CustomerEntity() {
 		super();
