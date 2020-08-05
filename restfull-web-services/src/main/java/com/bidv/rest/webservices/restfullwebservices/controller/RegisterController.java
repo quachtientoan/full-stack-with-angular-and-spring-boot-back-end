@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bidv.rest.webservices.restfullwebservices.entity.UserEntity;
+import com.bidv.rest.webservices.restfullwebservices.model.ResponseMessage;
 import com.bidv.rest.webservices.restfullwebservices.service.UserService;
 
 @RestController
@@ -23,22 +24,18 @@ public class RegisterController {
 	private PasswordEncoder passwordEncoder;
 
 	@PostMapping("/jpa/users/register")
-	public ResponseEntity<HttpStatus> createUser(@RequestBody UserEntity user) {
-		try {
-			if (service.findByUsername(user.getUsername()) != null) {
-				return new ResponseEntity<HttpStatus>(HttpStatus.BAD_REQUEST);
+	public ResponseEntity<ResponseMessage> createUser(@RequestBody UserEntity user) {
+		String message = "";
 
-			}
-
-			user.setPassword(passwordEncoder.encode(user.getPassword()));
-			service.save(user);
-
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new ResponseEntity<HttpStatus>(HttpStatus.NOT_FOUND);
+		if (service.findByUsername(user.getUsername()) != null) {
+			message = "Your username is exist";
+			return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
 		}
-		return new ResponseEntity<HttpStatus>(HttpStatus.OK);
+
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		service.save(user);
+		message = "Successful";
+		return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
 
 	}
 }
