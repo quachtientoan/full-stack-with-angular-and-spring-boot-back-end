@@ -26,5 +26,11 @@ public class BankServiceImpl implements BankService {
 		return repository.findByBankContaining(bankName);
 	}
 
+	@Override
+	public BankEntity findById(Integer receivingBank) {
+		// TODO Auto-generated method stub
+		return repository.findById(receivingBank).orElse(new BankEntity());
+	}
+
 
 }

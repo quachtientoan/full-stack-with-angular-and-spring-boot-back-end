@@ -11,4 +11,12 @@ public interface MoneyTranferService {
 
 	public MoneyTranferEntity create(MoneyTranferEntity entity);
 
+	public MoneyTranferEntity findById(Integer id);
+
+	public void delete(Integer id);
+
+	public void deleteMultiple(List<Integer> ids);
+
+
+
 }

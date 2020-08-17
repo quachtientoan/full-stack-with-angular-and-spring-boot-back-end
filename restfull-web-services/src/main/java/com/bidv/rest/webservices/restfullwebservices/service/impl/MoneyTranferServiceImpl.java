@@ -22,8 +22,25 @@ public class MoneyTranferServiceImpl implements MoneyTranferService {
 
 	@Override
 	public MoneyTranferEntity create(MoneyTranferEntity entity) {
-		// TODO Auto-generated method stub
 		return repository.save(entity);
 	}
+
+	@Override
+	public MoneyTranferEntity findById(Integer id) {
+		return repository.findById(id).orElse(null);
+	}
+
+	@Override
+	public void delete(Integer id) {
+		repository.deleteById(id);
+	}
+
+	@Override
+	public void deleteMultiple(List<Integer> ids) {
+		// TODO Auto-generated method stub
+		repository.deleteTransWithIds(ids);
+	}
+
+	
 
 }

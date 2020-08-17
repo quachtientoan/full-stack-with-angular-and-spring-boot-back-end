@@ -23,32 +23,11 @@ public class SourceAccountServiceImpl implements SourceAccountService {
 		return repository.findAll();
 	}
 
-//	@Override
-//	public CustomerEntity create(CustomerEntity entity) {
-//		return repository.save(entity);
-//	}
-//
-//	@Override
-//	public boolean delete(Integer cusId) {
-//		CustomerEntity entity = findById(cusId);
-//		if(entity != null) {
-//			repository.delete(entity);
-//			return true;
-//		}
-//		
-//		return false;
-//	}
-//
-//	@Override
-//	public CustomerEntity findById(Integer id) {
-//		// TODO Auto-generated method stub
-//		return repository.findById(id).orElse(new CustomerEntity());
-//	}
-//
-//	@Override
-//	public CustomerEntity save(CustomerEntity customer) {
-//		// TODO Auto-generated method stub
-//		return repository.save(customer);
-//	}
+	@Override
+	public SourceAccountEntity findById(Integer sourceAccountId) {
+		// TODO Auto-generated method stub
+		return repository.findById(sourceAccountId).orElse(new SourceAccountEntity());
+	}
+
 
 }

@@ -8,6 +8,8 @@ import com.bidv.rest.webservices.restfullwebservices.entity.SourceAccountEntity;
 public interface SourceAccountService {
 
 	public List<SourceAccountEntity> findAll();
+
+	public SourceAccountEntity findById(Integer sourceAccountId);
 	
 //	public CustomerEntity findById(Integer id);
 //	

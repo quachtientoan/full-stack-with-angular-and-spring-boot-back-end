@@ -44,16 +44,28 @@ values(10001,'NGUYEN VAN A', '12349584949403');
 insert into RECIPIENT_ACCOUNT(id, name,account_number)
 values(10002,'TRAN VAN B', '0003984929220949');
 -- money tranfer list
-drop table if exists money_tranfer_view; 
-CREATE VIEW MONEY_TRANFER_VIEW
-AS
-SELECT m.id, m.amount,m.content,m.money_tranfer_date,m.payer, b.name as bank_name, r.name as recipient_account_name, s.name as source_account_name FROM MONEY_TRANFER m 
-LEFT JOIN BANK b  ON m.bank_id = b.id
-LEFT JOIN RECIPIENT_ACCOUNT r ON m.recipient_account_id = r.id
-LEFT JOIN SOURCE_ACCOUNT s ON m.source_account_id = s.id;
+--drop table if exists money_tranfer_view; 
+--CREATE VIEW MONEY_TRANFER_VIEW
+--AS
+--SELECT m.id, m.amount,m.content,m.money_tranfer_date,m.payer, b.name as bank_name, r.name as recipient_account_name, s.name as source_account_name FROM MONEY_TRANFER m 
+--LEFT JOIN BANK b  ON m.bank_id = b.id
+--LEFT JOIN RECIPIENT_ACCOUNT r ON m.recipient_account_id = r.id
+--LEFT JOIN SOURCE_ACCOUNT s ON m.source_account_id = s.id;
 
 -- money tranfer
-insert into MONEY_TRANFER(id, amount,content, money_tranfer_date,payer,bank_id,recipient_account_id,source_account_id)
-values(10001, 133333, '111111', null,'Sender',10004,	10001,10002);
+insert into MONEY_TRANFER(id, amount,content, money_tranfer_date,payer,bank_id,recipient_account_id,source_account_id,status)
+values(10001, 133333, '111111', null,'Sender',10004,10001,10002,'1');
+
+insert into MONEY_TRANFER(id, amount,content, money_tranfer_date,payer,bank_id,recipient_account_id,source_account_id,status)
+values(10002, 133333, '111111', null,'Sender',10004,10001,10002,'1');
+
+insert into MONEY_TRANFER(id, amount,content, money_tranfer_date,payer,bank_id,recipient_account_id,source_account_id,status)
+values(10003, 133333, '111111', null,'Sender',10004,10001,10002,'1');
+
+insert into MONEY_TRANFER(id, amount,content, money_tranfer_date,payer,bank_id,recipient_account_id,source_account_id,status)
+values(10004, 133333, '111111', null,'Sender',10004,10001,10002,'1');
+
+insert into MONEY_TRANFER(id, amount,content, money_tranfer_date,payer,bank_id,recipient_account_id,source_account_id,status)
+values(10005, 133333, '111111', null,'Sender',10004,10001,10002,'1');
 
  	

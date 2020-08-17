@@ -33,6 +33,8 @@ public class MoneyTranferEntity {
 	private String content;
 
 	private String payer;
+	
+	private String status;
 
 	public Integer getId() {
 		return id;
@@ -97,5 +99,38 @@ public class MoneyTranferEntity {
 	public void setPayer(String payer) {
 		this.payer = payer;
 	}
+
+	public MoneyTranferEntity() {
+		super();
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public MoneyTranferEntity(Integer id, Date moneyTranferDate, Integer sourceAccountId, Integer recipientAccountId,
+			Integer receivingBank, Integer amount, String content, String payer, String status) {
+		super();
+		this.id = id;
+		this.moneyTranferDate = moneyTranferDate;
+		this.sourceAccountId = sourceAccountId;
+		this.recipientAccountId = recipientAccountId;
+		this.receivingBank = receivingBank;
+		this.amount = amount;
+		this.content = content;
+		this.payer = payer;
+		this.status = status;
+	}
+	
+	
+	
+	
+	
+	
+	
 
 }
