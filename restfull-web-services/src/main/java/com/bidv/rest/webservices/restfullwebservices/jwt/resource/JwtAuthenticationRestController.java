@@ -1,6 +1,8 @@
 package com.bidv.rest.webservices.restfullwebservices.jwt.resource;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -50,8 +52,11 @@ public class JwtAuthenticationRestController {
     final UserDetails userDetails = jwtInMemoryUserDetailsService.loadUserByUsername(authenticationRequest.getUsername());
 
     final String token = jwtTokenUtil.generateToken(userDetails);
-
-    return ResponseEntity.ok(new JwtTokenResponse(token));
+    List<String> roles = userDetails.getAuthorities().stream()
+			.map(item -> item.getAuthority())
+			.collect(Collectors.toList());
+    System.out.println(roles);
+    return ResponseEntity.ok(new JwtTokenResponse(token, roles));
   }
 
   @RequestMapping(value = "${jwt.refresh.token.uri}", method = RequestMethod.GET)
@@ -60,10 +65,12 @@ public class JwtAuthenticationRestController {
     final String token = authToken.substring(7);
     String username = jwtTokenUtil.getUsernameFromToken(token);
     JwtUserDetails user = (JwtUserDetails) jwtInMemoryUserDetailsService.loadUserByUsername(username);
-
+    List<String> roles = user.getAuthorities().stream()
+			.map(item -> item.getAuthority())
+			.collect(Collectors.toList());
     if (jwtTokenUtil.canTokenBeRefreshed(token)) {
       String refreshedToken = jwtTokenUtil.refreshToken(token);
-      return ResponseEntity.ok(new JwtTokenResponse(refreshedToken));
+      return ResponseEntity.ok(new JwtTokenResponse(refreshedToken, roles));
     } else {
       return ResponseEntity.badRequest().body(null);
     }

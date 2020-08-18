@@ -25,6 +25,8 @@ public class MoneyTranferModel {
 	private String payer;
 	
 	private String moneyTranferDateStr;
+	
+	private String status;
 
 	public Integer getId() {
 		return id;
@@ -107,9 +109,17 @@ public class MoneyTranferModel {
 		this.moneyTranferDateStr = moneyTranferDateStr;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public MoneyTranferModel(Integer id, Date moneyTranferDate, SourceAccountEntity sourceAccountEntity,
 			RecipientAccountEntity recipientAccountEntity, BankEntity bankEntity, Integer amount, String content,
-			String payer, String moneyTranferDateStr) {
+			String payer, String moneyTranferDateStr, String status) {
 		super();
 		this.id = id;
 		this.moneyTranferDate = moneyTranferDate;
@@ -120,7 +130,10 @@ public class MoneyTranferModel {
 		this.content = content;
 		this.payer = payer;
 		this.moneyTranferDateStr = moneyTranferDateStr;
+		this.status = status;
 	}
+
+	
 
 	
 	

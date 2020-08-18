@@ -2,6 +2,7 @@ package com.bidv.rest.webservices.restfullwebservices.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bidv.rest.webservices.restfullwebservices.entity.BankEntity;
@@ -43,10 +43,9 @@ public class MoneyTranferController {
 	@Autowired
 	RecipientAccountService recipientAccountService;
 
-//	@GetMapping("/api/user/{username}/money-tranfer")
-//	public List<MoneyTranferView> getAll(@PathVariable("username") String username) {
-//		return viewService.findAll();
-//	}
+	public static final String START_STATUS = "Đang soạn";
+	public static final String APPROVE_STATUS = "Phê duyệt";
+	public static final String REJECT_STATUS = "Từ chối";
 
 	@GetMapping("/api/user/{username}/money-tranfer")
 	public List<MoneyTranferModel> getAll(@PathVariable("username") String username) {
@@ -66,10 +65,21 @@ public class MoneyTranferController {
 
 				MoneyTranferModel model = new MoneyTranferModel(entity.getId(), entity.getMoneyTranferDate(),
 						sourceAccountEntity, recipientAccountEntity, bankEntity, entity.getAmount(),
-						entity.getContent(), entity.getPayer(), moneyTranferDateStr);
+						entity.getContent(), entity.getPayer(), moneyTranferDateStr, entity.getStatus());
 				lst.add(model);
 			}
 		}
+
+//		SourceAccountEntity sourceAccountEntity = sourceAccountService.findById(10001);
+//		RecipientAccountEntity recipientAccountEntity = recipientAccountService.findById(10001);
+//		BankEntity bankEntity = bankService.findById(1001);
+//		for (int i = 0; i < 1000; i++) {
+//
+//			MoneyTranferModel model = new MoneyTranferModel(i, new Date(), sourceAccountEntity, recipientAccountEntity,
+//					bankEntity, i, "1", "Payer", sdf.format(new Date()), "Khởi tạo");
+//			lst.add(model);
+//		}
+
 		return lst;
 	}
 
@@ -87,7 +97,7 @@ public class MoneyTranferController {
 		}
 		MoneyTranferModel model = new MoneyTranferModel(entity.getId(), entity.getMoneyTranferDate(),
 				sourceAccountEntity, recipientAccountEntity, bankEntity, entity.getAmount(), entity.getContent(),
-				entity.getPayer(), moneyTranferDateStr);
+				entity.getPayer(), moneyTranferDateStr, entity.getStatus());
 		return model;
 
 	}
@@ -102,6 +112,7 @@ public class MoneyTranferController {
 		entity.setContent(model.getContent());
 		entity.setMoneyTranferDate(model.getMoneyTranferDate());
 		entity.setPayer(model.getPayer());
+		entity.setStatus(model.getStatus());
 
 		SourceAccountEntity sourceAccountEntity = sourceAccountService.findById(model.getSourceAccountEntity().getId());
 		RecipientAccountEntity recipientAccountEntity = recipientAccountService
@@ -113,13 +124,13 @@ public class MoneyTranferController {
 		entity.setSourceAccountId(sourceAccountEntity.getId());
 		return service.create(entity);
 	}
-	
+
 	@DeleteMapping("/api/user/{username}/money-tranfer/{id}")
 	public ResponseEntity<Void> deleteTrans(@PathVariable("username") String username, @PathVariable("id") Integer id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 //	@PostMapping("/api/user/{username}/delete/money-tranfer")
 //	public ResponseEntity<Void> deleteMultipleTrans(@PathVariable("username") String username, @RequestBody List<Integer> ids) {
 //		System.out.println("go here");
