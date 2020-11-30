@@ -95,22 +95,22 @@ values(10008,'NGUYEN VAN A8', '12349584949403');
 
 -- money tranfer
 insert into MONEY_TRANFER(id, amount,content, money_tranfer_date,payer,bank_id,recipient_account_id,source_account_id,status)
-values(10001, 133333, '1', null,'Sender',10004,10001,10002,'Đang soạn');
+values(10001, 133333, '1', null,'Sender',10001,10001,10002,'Đang soạn');
 
 insert into MONEY_TRANFER(id, amount,content, money_tranfer_date,payer,bank_id,recipient_account_id,source_account_id,status)
-values(10002, 133333, '2', null,'Sender',10004,10001,10002,'Đang soạn');
+values(10002, 133333, '2', null,'Sender',10002,10001,10002,'Đang soạn');
 
 insert into MONEY_TRANFER(id, amount,content, money_tranfer_date,payer,bank_id,recipient_account_id,source_account_id,status)
-values(10003, 133333, '3', null,'Sender',10004,10001,10002,'Đang soạn');
+values(10003, 133333, '3', null,'Sender',10003,10001,10002,'Đang soạn');
 
 insert into MONEY_TRANFER(id, amount,content, money_tranfer_date,payer,bank_id,recipient_account_id,source_account_id,status)
 values(10004, 133333, '4', null,'Sender',10004,10001,10002,'Đang soạn');
 
 insert into MONEY_TRANFER(id, amount,content, money_tranfer_date,payer,bank_id,recipient_account_id,source_account_id,status)
-values(10006, 133333, '5', null,'Sender',10004,10001,10002,'Đang soạn');
+values(10006, 133333, '5', null,'Sender',10005,10001,10002,'Đang soạn');
 
 insert into MONEY_TRANFER(id, amount,content, money_tranfer_date,payer,bank_id,recipient_account_id,source_account_id,status)
-values(10007, 133333, '6', null,'Sender',10004,10001,10002,'Đang soạn');
+values(10007, 133333, '6', null,'Sender',10006,10001,10002,'Đang soạn');
 
 insert into MONEY_TRANFER(id, amount,content, money_tranfer_date,payer,bank_id,recipient_account_id,source_account_id,status)
 values(10008, 133333, '7', null,'Sender',10004,10001,10002,'Đang soạn');
